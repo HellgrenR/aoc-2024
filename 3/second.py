@@ -1,22 +1,25 @@
 import re
 
-input_file = open("3/input.txt", "r")
-
-enabled = True
+with open("3/input.txt", "r") as input_file:
+  lines = input_file.readlines()
+  
 # find between don't() and do(), and remove it
-removed = re.sub("don't\(\).*?(do\(\)|$)", "", input_file.read())
-regexed = re.findall("mul\([0-9]+,[0-9]+\)", removed)
 
 multiplied_numbers = []
 
-for mul_numbers in regexed:
-  numbers = re.findall("([0-9]+),([0-9]+)", mul_numbers)
+for line in lines:
+  removed = re.sub(r"don't\(\).*?(do\(\)|$)", "", line)
+  regexed = re.findall(r"mul\([0-9]+,[0-9]+\)", removed)
 
-  multiplied_number = int(numbers[0][0]) * int(numbers[0][1])
+  for mul_numbers in regexed:
+    numbers = re.findall("([0-9]+),([0-9]+)", mul_numbers)
 
-  multiplied_numbers.append(multiplied_number)
+    multiplied_number = int(numbers[0][0]) * int(numbers[0][1])
+
+    multiplied_numbers.append(multiplied_number)
 
 print(sum(multiplied_numbers))
 
 # 110269523 too high HellgrenR
 # 83596704 too high
+# 69247082 incorrect
