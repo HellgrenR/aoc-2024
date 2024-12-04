@@ -1,22 +1,22 @@
 import re
 
 with open("3/input.txt", "r") as input_file:
-  lines = input_file.readlines()
-  
+  lines = input_file.read()
+  joined_lines = lines.replace("\n", "")
+
 # find between don't() and do(), and remove it
 
 multiplied_numbers = []
 
-for line in lines:
-  removed = re.sub(r"don't\(\).*?(do\(\)|$)", "", line)
-  regexed = re.findall(r"mul\([0-9]+,[0-9]+\)", removed)
+removed = re.sub(r"don't\(\).*?(do\(\)|$)", "", joined_lines)
+regexed = re.findall(r"mul\([0-9]+,[0-9]+\)", removed)
 
-  for mul_numbers in regexed:
-    numbers = re.findall("([0-9]+),([0-9]+)", mul_numbers)
+for mul_numbers in regexed:
+  numbers = re.findall("([0-9]+),([0-9]+)", mul_numbers)
 
-    multiplied_number = int(numbers[0][0]) * int(numbers[0][1])
+  multiplied_number = int(numbers[0][0]) * int(numbers[0][1])
 
-    multiplied_numbers.append(multiplied_number)
+  multiplied_numbers.append(multiplied_number)
 
 print(sum(multiplied_numbers))
 
