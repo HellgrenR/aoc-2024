@@ -16,8 +16,6 @@ with open("5/input.txt", "r") as input_file:
   numbers = re.sub(r"[0-9]+\|[0-9]+", "", input).strip()
   split_numbers = numbers.split("\n")
 
-# Get the sum of the middle number in updates that confine to order_rules
-
 conforming_updates = []
 for num_line in split_numbers:
   update = num_line.split(",")
@@ -31,3 +29,5 @@ for update in conforming_updates:
   middle_conforming.append(int(update[int(len(update)/2)]))
 
 print(sum(middle_conforming))
+
+# 4905
