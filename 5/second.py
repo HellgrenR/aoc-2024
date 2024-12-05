@@ -11,7 +11,7 @@ def get_non_conforming(order_rules: list, update: list):
 def make_conform(order_rules: list, update: list):
   solved = 0
   # I think this is inefficient as shit but it seems to work :D
-  while solved < 2:
+  while solved < 9:
     for rule in order_rules:
       first_rule, second_rule = rule.split("|")
 
@@ -51,3 +51,4 @@ for update in conforming_updates:
 print(sum(middle_conforming))
 
 # 6187 too low D:
+# 6204 CORRECT WTF
